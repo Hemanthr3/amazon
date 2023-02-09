@@ -19,7 +19,7 @@ const ProductFeed = ({ products }) => {
       <div className="md:col-span-2">
         {products.slice(4,5).map(({ id, title, price, description, category, image }) => (
         <Product
-          key={id}
+          key={Math.random()}
           id={id}
           title={title}
           price={price}
