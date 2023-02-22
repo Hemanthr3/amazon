@@ -3,7 +3,7 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
 
-export default function Home({products}) {
+export default function Home({ products }) {
   return (
     <div className="bg-gray-100">
       <Head>
@@ -13,19 +13,33 @@ export default function Home({products}) {
       <Header />
       <main className="mx-auto max-w-screen-xl">
         <Banner />
-        <ProductFeed products={products}/>
+        <ProductFeed products={products} />
       </main>
     </div>
   );
 }
 
-export async function getServerSideProps(context){
-    const products = await fetch("https://fakestoreapi.com/products").then(
-        (res) => res.json()
-    );
-    return{
-        props: {
-            products,
-        }
-    }
+export async function getServerSideProps(context) {
+  async function getProducts() {
+  try {
+    const res = await fetch("https://fakestoreapi.com/products");
+    return res.json();
+  } catch (e) {
+    console.log(e);
+  }
 }
+let products = await getProducts();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+
+// async function getProducts() {
+//   try {
+//     const res = await fetch();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
