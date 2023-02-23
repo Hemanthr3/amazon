@@ -44,7 +44,7 @@ const Checkout = () => {
           {items.lenght > 0 && (
             <div>
               <h2 className="whitespace-nowrap">
-                Subtotal ({items.lenght} items):
+                Subtotal ({items.lenght} items): {" "}
                 <span className="font-bold">
                   <Currency quantity={total} currency="INR" />
                 </span>
